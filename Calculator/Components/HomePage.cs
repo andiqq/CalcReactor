@@ -73,11 +73,7 @@ internal class HomePage : Component<HomePageState>
                     s.Perc = false;
                 }, false);
             }
-        }
-
-        ;
-
-
+        };
         switch (key)
         {
             case "back":
