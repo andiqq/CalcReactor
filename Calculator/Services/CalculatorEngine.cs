@@ -8,7 +8,7 @@ internal class CalculatorEngine
     private decimal? _number1;
     private decimal? _number2;
     private string _currentOperation = string.Empty;
-    private decimal _currentValue;
+    private decimal _currentValue = 0m;
     private string _currentInput = "0";
     private bool _isPercentage;
     private bool _calculationJustFinished;
@@ -21,15 +21,15 @@ internal class CalculatorEngine
 
         var expression = FormatNumber(_number1.Value);
 
-        if (!string.IsNullOrEmpty(_currentOperation))
-        {
+        if (string.IsNullOrEmpty(_currentOperation)) return string.Empty;
+        
             expression += $" {_currentOperation}";
 
             if (_currentInput != "0")
             {
                 expression += $" {_currentInput}";
             }
-        }
+        
 
         if (_isPercentage)
         {
@@ -149,7 +149,7 @@ internal class CalculatorEngine
         _calculationJustFinished = false;
     }
 
-    private string FormatNumber(decimal number)
+    private static string FormatNumber(decimal number)
     {
         const int maxLength = 10;
 
@@ -158,8 +158,13 @@ internal class CalculatorEngine
             return number.ToString("E4");
         }
 
-        var result = number.ToString();
-        if (result.Length <= maxLength) return result;
+        if (number == Math.Floor(number))
+        {
+            return number.ToString("0");
+        }
+
+        string formatted = number.ToString("0.##########").TrimEnd('0').TrimEnd('.');
+        if (formatted.Length <= maxLength) return formatted;
 
         var integerPart = Math.Floor(Math.Abs(number));
         var integerDigits = integerPart.ToString().Length;
@@ -168,7 +173,7 @@ internal class CalculatorEngine
         var decimalPlaces = maxLength - integerDigits - 1;
         if (decimalPlaces > 0)
         {
-            return Math.Round(number, decimalPlaces).ToString();
+            return Math.Round(number, decimalPlaces).ToString("0.##########").TrimEnd('0').TrimEnd('.');
         }
 
         return Math.Round(number).ToString();

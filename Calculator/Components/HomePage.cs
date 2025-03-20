@@ -34,7 +34,7 @@ internal class HomePage : Component<HomePageState>
                     .TextColor(AppTheme.Text.WithAlpha(0.4f))
                     .HorizontalTextAlignment(TextAlignment.End),
                 Label(State.ResultLabel)
-                    .FontSize(63)
+                    .FontSize(State.ResultLabel.Length > 9 ? (600.0 / State.ResultLabel.Length) : 63)
                     .HorizontalTextAlignment(TextAlignment.End)
                     .LineBreakMode(LineBreakMode.NoWrap)
             )
