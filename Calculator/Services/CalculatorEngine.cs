@@ -9,11 +9,12 @@ internal class CalculatorEngine
     private decimal? _number2;
     private string _currentOperation = string.Empty;
     private decimal _currentValue = 0m;
-    private string _currentInput = "0";
     private bool _isPercentage;
     private bool _calculationJustFinished;
+    
+    public string CurrentInput { get; private set; } = "0";
 
-    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(_currentInput);
+    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(CurrentInput);
 
     public string GetExpression()
     {
@@ -25,14 +26,9 @@ internal class CalculatorEngine
 
         expression += $" {_currentOperation}";
 
-        if (_currentInput != "0")
+        if (CurrentInput != "0")
         {
-            expression += $" {_currentInput}";
-        }
-
-        if (_isPercentage)
-        {
-            expression += "%";
+            expression += $" {CurrentInput}";
         }
 
         return expression;
@@ -47,29 +43,19 @@ internal class CalculatorEngine
                 break;
 
             case "⌫":
-                if (_currentInput.Length > 1)
-                {
-                    _currentInput = _currentInput[..^1];
-                }
-                else
-                {
-                    _currentInput = "0";
-                }
+                CurrentInput = CurrentInput.Length > 1 ? CurrentInput[..^1] : "0";
+                
                 break;
 
             case "+-":
-                if (_currentInput.StartsWith("-"))
-                {
-                    _currentInput = _currentInput[1..];
-                }
-                else
-                {
-                    _currentInput = "-" + _currentInput;
-                }
+                if (CurrentInput == "0") break;
+
+                CurrentInput = CurrentInput.StartsWith('-') ? CurrentInput[1..] : "-" + CurrentInput;
+                _calculationJustFinished = false;
                 break;
 
-            case "." when !_currentInput.Contains('.'):
-                _currentInput += ".";
+            case "." when _calculationJustFinished || !CurrentInput.Contains('.'):
+                CurrentInput = _calculationJustFinished ? "0." : $"{CurrentInput}.";
                 _calculationJustFinished = false;
                 break;
 
@@ -84,10 +70,10 @@ internal class CalculatorEngine
                 }
                 else
                 {
-                    _number1 = decimal.Parse(_currentInput);  // Parse only for user input
+                    _number1 = decimal.Parse(CurrentInput);  // Parse only for user input
                 }
                 _currentOperation = key;
-                _currentInput = "0";
+                CurrentInput = "0";
                 _calculationJustFinished = false;
                 break;
 
@@ -101,12 +87,12 @@ internal class CalculatorEngine
                 {
                     if (_calculationJustFinished)
                     {
-                        _currentInput = key;
+                        CurrentInput = key;
                         _calculationJustFinished = false;
                     }
                     else
                     {
-                        _currentInput = _currentInput == "0" ? key : _currentInput + key;
+                        CurrentInput = CurrentInput == "0" ? key : CurrentInput + key;
                     }
                 }
                 break;
@@ -117,7 +103,7 @@ internal class CalculatorEngine
     {
         if (_number1 == null || string.IsNullOrEmpty(_currentOperation)) return;
 
-        _number2 = decimal.Parse(_currentInput);
+        _number2 = decimal.Parse(CurrentInput);
         _isPercentage = key == "%";
         var n2 = _isPercentage ? (_number2.Value / 100.0m) * _number1.Value : _number2.Value;
 
@@ -130,7 +116,7 @@ internal class CalculatorEngine
             _ => _number2.Value
         };
 
-        _currentInput = _currentValue.ToString();
+        CurrentInput = _currentValue.ToString();
         _number1 = _currentValue;
         _number2 = null;
         _currentOperation = string.Empty;
@@ -142,7 +128,7 @@ internal class CalculatorEngine
         _number1 = null;
         _number2 = null;
         _currentOperation = string.Empty;
-        _currentInput = "0";
+        CurrentInput = "0";
         _currentValue = 0m;
         _isPercentage = false;
         _calculationJustFinished = false;

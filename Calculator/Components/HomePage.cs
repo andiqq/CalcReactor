@@ -53,7 +53,7 @@ internal class HomePage : Component<HomePageState>
         SetState(s =>
         {
             s.ExpressionLabel = _calculator.GetExpression();
-            s.ResultLabel = FormatNumber(_calculator.CurrentValue);
+            s.ResultLabel = key == "." ? _calculator.CurrentInput : FormatNumber(_calculator.CurrentValue);
         });
     }
 }

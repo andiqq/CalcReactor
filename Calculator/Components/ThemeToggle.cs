@@ -14,7 +14,7 @@ internal class ThemeToggle : Component
                 .OnColor(Colors.Gray)
                 .IsToggled(Theme.IsDarkTheme)
                 .OnToggled(AppTheme.ToggleCurrentAppTheme)
-                .ThumbColor(AppTheme.ButtonMediumEmphasisBackground)
+                .ThumbColor(AppTheme.ButtonMediumBackground)
                 .Margin(10),
             Image("moon.png")
                 .HeightRequest(20)

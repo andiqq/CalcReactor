@@ -1,4 +1,5 @@
-using AppTheme = Calculator.Resources.Styles.AppTheme;
+using static Calculator.Resources.Styles.AppTheme;
+using static Calculator.Resources.Styles.AppTheme.Selector;
 using Button = MauiReactor.Button;
 using ImageButton = MauiReactor.ImageButton;
 
@@ -10,26 +11,26 @@ internal partial class KeyPad : Component
 
     public override VisualNode Render()
         => Grid("* * * * *", " * * * *",
-                RenderButton("C", 2, 0, 0),
+                RenderButton("C", Medium, 0, 0),
                 RenderImageButton(Theme.IsDarkTheme ? "plus_minus_white.png" : "plus_minus.png", "+-", 0, 1),
-                RenderButton("%", 2, 0, 2),
-                RenderButton("÷", 3, 0, 3),
-                RenderButton("7", 1, 1, 0),
-                RenderButton("8", 1, 1, 1),
-                RenderButton("9", 1, 1, 2),
-                RenderButton("×", 3, 1, 3),
-                RenderButton("4", 1, 2, 0),
-                RenderButton("5", 1, 2, 1),
-                RenderButton("6", 1, 2, 2),
-                RenderButton("-", 3, 2, 3),
-                RenderButton("1", 1, 3, 0),
-                RenderButton("2", 1, 3, 1),
-                RenderButton("3", 1, 3, 2),
-                RenderButton("+", 3, 3, 3),
-                RenderButton(".", 1, 4, 0),
-                RenderButton("0", 1, 4, 1),
-                RenderButton("⌫", 1, 4, 2),
-                RenderButton("=", 3, 4, 3)
+                RenderButton("%", Medium, 0, 2),
+                RenderButton("÷", High, 0, 3),
+                RenderButton("7", Low, 1, 0),
+                RenderButton("8", Low, 1, 1),
+                RenderButton("9", Low, 1, 2),
+                RenderButton("×", High, 1, 3),
+                RenderButton("4", Low, 2, 0),
+                RenderButton("5", Low, 2, 1),
+                RenderButton("6", Low, 2, 2),
+                RenderButton("-", High, 2, 3),
+                RenderButton("1", Low, 3, 0),
+                RenderButton("2", Low, 3, 1),
+                RenderButton("3", Low, 3, 2),
+                RenderButton("+", High, 3, 3),
+                RenderButton(".", Low, 4, 0),
+                RenderButton("0", Low, 4, 1),
+                RenderButton("⌫", Low, 4, 2),
+                RenderButton("=", High, 4, 3)
             )
             .ColumnSpacing(16)
             .RowSpacing(16)
@@ -37,15 +38,9 @@ internal partial class KeyPad : Component
             .OnSizeChanged(Invalidate)
             .HeightRequest(400);
 
-    private Button RenderButton(string text, int type, int row, int column)
+    private Button RenderButton(string text, string theme, int row, int column)
         => Button(text)
-            .ThemeKey(type switch
-            {
-                1 => AppTheme.Selector.LowEmphasis,
-                2 => AppTheme.Selector.MediumEmphasis,
-                3 => AppTheme.Selector.HighEmphasis,
-                _ => AppTheme.Selector.LowEmphasis
-            })
+            .ThemeKey(theme)
             .GridRow(row)
             .GridColumn(column)
             .OnClicked(() => _onKeyPressed?.Invoke(text));
@@ -54,7 +49,7 @@ internal partial class KeyPad : Component
         => ImageButton()
             .Source(imageSource)
             .Aspect(Aspect.Center)
-            .BackgroundColor(AppTheme.ButtonMediumEmphasisBackground)
+            .BackgroundColor(ButtonMediumBackground)
             .CornerRadius(24)
             .GridRow(row)
             .GridColumn(column)

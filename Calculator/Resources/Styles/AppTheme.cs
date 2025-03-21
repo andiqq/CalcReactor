@@ -1,10 +1,6 @@
-﻿using Button = MauiReactor.Button;
-using Grid = MauiReactor.Grid;
-using Image = MauiReactor.Image;
+﻿namespace Calculator.Resources.Styles;
 
-namespace Calculator.Resources.Styles;
-
-class AppTheme : Theme
+internal class AppTheme : Theme
 {
     public static void ToggleCurrentAppTheme()
     {
@@ -15,62 +11,30 @@ class AppTheme : Theme
     }
 
     public static Color DarkBackground { get; } = Color.FromArgb("#FF17171C");
-    public static Color DarkText { get; } = Color.FromArgb("#FFFFFFFF");
-    public static Color DarkButtonHighEmphasis { get; } = Color.FromArgb("#FF4B5EFC");
-    public static Color DarkButtonMediumEmphasis { get; } = Color.FromArgb("#FF4E505F");
-    public static Color DarkButtonLowEmphasis { get; } = Color.FromArgb("#FF2E2F38");
+    public static Color DarkText => Colors.White;
+    public static Color DarkButtonHigh { get; } = Color.FromArgb("#FF4B5EFC");
+    public static Color DarkButtonMedium { get; } = Color.FromArgb("#FF4E505F");
+    public static Color DarkButtonLow { get; } = Color.FromArgb("#FF2E2F38");
     public static Color LightBackground { get; } = Color.FromArgb("#FFF1F2F3");
-    public static Color LightText { get; } = Color.FromArgb("#FF000000");
-    public static Color LightButtonHighEmphasis { get; } = Color.FromArgb("#FF4B5EFC");
-    public static Color LightButtonMediumEmphasis { get; } = Color.FromArgb("#FFD2D3DA");
-    public static Color LightButtonLowEmphasis { get; } = Color.FromArgb("#FFFFFFFF");
-    public static Color GeneralWhite { get; } = Color.FromArgb("#FFFFFFFF");
+    public static Color LightText => Colors.Black;
+    public static Color LightButtonHigh { get; } = Color.FromArgb("#FF4B5EFC");
+    public static Color LightButtonMedium { get; } = Color.FromArgb("#FFD2D3DA");
+    public static Color LightButtonLow => Colors.White;
+    public static Color GeneralWhite => Colors.White;
 
 
     public static Color Background => IsDarkTheme ? DarkBackground : LightBackground;
     public static Color Text => IsDarkTheme ? DarkText : LightText;
-    public static Color ButtonHighEmphasisBackground => IsDarkTheme ? DarkButtonHighEmphasis : LightButtonHighEmphasis;
-    public static Color ButtonMediumEmphasisBackground => IsDarkTheme ? DarkButtonMediumEmphasis : LightButtonMediumEmphasis;
-    public static Color ButtonLowEmphasisBackground => IsDarkTheme ? DarkButtonLowEmphasis : LightButtonLowEmphasis;
+    public static Color ButtonHighBackground => IsDarkTheme ? DarkButtonHigh : LightButtonHigh;
+    public static Color ButtonMediumBackground => IsDarkTheme ? DarkButtonMedium : LightButtonMedium;
+    public static Color ButtonLowBackground => IsDarkTheme ? DarkButtonLow : LightButtonLow;
 
     public static class Selector
     {
-        public const string HighEmphasis = nameof(HighEmphasis);
-        public const string MediumEmphasis = nameof(MediumEmphasis);
-        public const string LowEmphasis = nameof(LowEmphasis);
+        public const string High = nameof(High);
+        public const string Medium = nameof(Medium);
+        public const string Low = nameof(Low);
     }
-
-    public static Button Button(string text)
-        => new Button(text)
-            .FontFamily("WorkSansRegular")
-            .TextColor(Text)
-            .CornerRadius(24)
-            .FontSize(32);
-
-    public static Grid ImageButton(string imageSource, Color backgroundColor, Action? clickAction)
-        =>
-        [
-            new Button()
-                .CornerRadius(24)
-                .BackgroundColor(backgroundColor)
-                .OnClicked(clickAction),
-
-            new Image(imageSource)
-                .BackgroundColor(Colors.Transparent)
-                .HCenter()
-                .VCenter()
-                .Aspect(Aspect.Center) 
-                .OnTapped(clickAction)
-        ];
-
-    public static Grid ImageButtonHighEmphasis(string imageSource, Action? clickAction)
-        => ImageButton(imageSource, ButtonHighEmphasisBackground, clickAction);
-
-    public static Grid ImageButtonMediumEmphasis(string imageSource, Action? clickAction)
-        => ImageButton(imageSource, ButtonMediumEmphasisBackground, clickAction);
-
-    public static Grid ImageButtonLowEmphasis(string imageSource, Action? clickAction)
-        => ImageButton(imageSource, ButtonLowEmphasisBackground, clickAction);
 
     protected override void OnApply()
     {
@@ -84,14 +48,14 @@ class AppTheme : Theme
             .CornerRadius(24)
             .FontSize(32);
 
-        ButtonStyles.Themes[Selector.HighEmphasis] = _ => _
+        ButtonStyles.Themes[Selector.High] = _ => _
             .TextColor(GeneralWhite)
-            .BackgroundColor(ButtonHighEmphasisBackground);
+            .BackgroundColor(ButtonHighBackground);
 
-        ButtonStyles.Themes[Selector.MediumEmphasis] = _ => _
-            .BackgroundColor(ButtonMediumEmphasisBackground);
+        ButtonStyles.Themes[Selector.Medium] = _ => _
+            .BackgroundColor(ButtonMediumBackground);
 
-        ButtonStyles.Themes[Selector.LowEmphasis] = _ => _
-            .BackgroundColor(ButtonLowEmphasisBackground);
+        ButtonStyles.Themes[Selector.Low] = _ => _
+            .BackgroundColor(ButtonLowBackground);
     }
 }
