@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using AppTheme = Calculator.Resources.Styles.AppTheme;
 using Calculator.Services;
-using static Calculator.Services.DisplayFormatter;
 
 namespace Calculator.Components;
 
@@ -26,14 +24,14 @@ internal class HomePage : Component<HomePageState>
                         .GridRow(2)
                 )
             )
-            .BackgroundColor(AppTheme.Background);
+            .BackgroundColor(Background);
     
     private VStack RenderDisplayPanel()
     {
         return VStack(
                 Label(State.ExpressionLabel)
                     .FontSize(40)
-                    .TextColor(AppTheme.Text.WithAlpha(0.4f))
+                    .TextColor(Text.WithAlpha(0.4f))
                     .HorizontalTextAlignment(TextAlignment.End),
                 Label(State.ResultLabel)
                     .FontSize(CalculateFontSize(State.ResultLabel).fontSize)

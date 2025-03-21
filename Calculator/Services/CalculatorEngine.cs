@@ -1,6 +1,4 @@
-using System.Security.Cryptography.X509Certificates;
 // ReSharper disable SpecifyACultureInStringConversionExplicitly
-
 namespace Calculator.Services;
 
 internal class CalculatorEngine
@@ -8,7 +6,7 @@ internal class CalculatorEngine
     private decimal? _number1;
     private decimal? _number2;
     private string _currentOperation = string.Empty;
-    private decimal _currentValue = 0m;
+    private decimal _currentValue;
     private bool _isPercentage;
     private bool _calculationJustFinished;
     

@@ -1,5 +1,3 @@
-using static Calculator.Resources.Styles.AppTheme;
-using static Calculator.Resources.Styles.AppTheme.Selector;
 using Button = MauiReactor.Button;
 using ImageButton = MauiReactor.ImageButton;
 
@@ -12,7 +10,7 @@ internal partial class KeyPad : Component
     public override VisualNode Render()
         => Grid("* * * * *", " * * * *",
                 RenderButton("C", Medium, 0, 0),
-                RenderImageButton(Theme.IsDarkTheme ? "plus_minus_white.png" : "plus_minus.png", "+-", 0, 1),
+                RenderImageButton(IsDarkTheme ? "plus_minus_white.png" : "plus_minus.png", "+-", 0, 1),
                 RenderButton("%", Medium, 0, 2),
                 RenderButton("÷", High, 0, 3),
                 RenderButton("7", Low, 1, 0),

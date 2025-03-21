@@ -1,5 +1,3 @@
-using AppTheme = Calculator.Resources.Styles.AppTheme;
-
 namespace Calculator.Components;
 
 internal class ThemeToggle : Component
@@ -12,9 +10,9 @@ internal class ThemeToggle : Component
                 .GridColumn(0),
             Switch()
                 .OnColor(Colors.Gray)
-                .IsToggled(Theme.IsDarkTheme)
-                .OnToggled(AppTheme.ToggleCurrentAppTheme)
-                .ThumbColor(AppTheme.ButtonMediumBackground)
+                .IsToggled(IsDarkTheme)
+                .OnToggled(ToggleCurrentAppTheme)
+                .ThumbColor(ButtonMediumBackground)
                 .Margin(10),
             Image("moon.png")
                 .HeightRequest(20)
