@@ -13,23 +13,22 @@ internal class CalculatorEngine
     private bool _isPercentage;
     private bool _calculationJustFinished;
 
-    public string CurrentInput => _calculationJustFinished ? FormatNumber(_currentValue) : _currentInput;
+    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(_currentInput);
 
     public string GetExpression()
     {
         if (_number1 == null) return string.Empty;
 
-        var expression = FormatNumber(_number1.Value);
+        var expression = _number1.Value.ToString();
 
         if (string.IsNullOrEmpty(_currentOperation)) return string.Empty;
-        
-            expression += $" {_currentOperation}";
 
-            if (_currentInput != "0")
-            {
-                expression += $" {_currentInput}";
-            }
-        
+        expression += $" {_currentOperation}";
+
+        if (_currentInput != "0")
+        {
+            expression += $" {_currentInput}";
+        }
 
         if (_isPercentage)
         {
@@ -131,7 +130,7 @@ internal class CalculatorEngine
             _ => _number2.Value
         };
 
-        _currentInput = FormatNumber(_currentValue);
+        _currentInput = _currentValue.ToString();
         _number1 = _currentValue;
         _number2 = null;
         _currentOperation = string.Empty;
@@ -147,35 +146,5 @@ internal class CalculatorEngine
         _currentValue = 0m;
         _isPercentage = false;
         _calculationJustFinished = false;
-    }
-
-    private static string FormatNumber(decimal number)
-    {
-        const int maxLength = 10;
-
-        if (Math.Abs((double)number) >= 1e10 || (Math.Abs((double)number) < 0.0001 && number != 0))
-        {
-            return number.ToString("E4");
-        }
-
-        if (number == Math.Floor(number))
-        {
-            return number.ToString("0");
-        }
-
-        string formatted = number.ToString("0.##########").TrimEnd('0').TrimEnd('.');
-        if (formatted.Length <= maxLength) return formatted;
-
-        var integerPart = Math.Floor(Math.Abs(number));
-        var integerDigits = integerPart.ToString().Length;
-        if (number < 0) integerDigits++;
-
-        var decimalPlaces = maxLength - integerDigits - 1;
-        if (decimalPlaces > 0)
-        {
-            return Math.Round(number, decimalPlaces).ToString("0.##########").TrimEnd('0').TrimEnd('.');
-        }
-
-        return Math.Round(number).ToString();
     }
 }

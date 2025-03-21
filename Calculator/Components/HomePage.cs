@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using AppTheme = Calculator.Resources.Styles.AppTheme;
 using Calculator.Services;
+using static Calculator.Services.DisplayFormatter;
 
 namespace Calculator.Components;
 
@@ -26,15 +27,16 @@ internal class HomePage : Component<HomePageState>
                 )
             )
             .BackgroundColor(AppTheme.Background);
-
+    
     private VStack RenderDisplayPanel()
-        => VStack(
+    {
+        return VStack(
                 Label(State.ExpressionLabel)
                     .FontSize(40)
                     .TextColor(AppTheme.Text.WithAlpha(0.4f))
                     .HorizontalTextAlignment(TextAlignment.End),
                 Label(State.ResultLabel)
-                    .FontSize(State.ResultLabel.Length > 9 ? (600.0 / State.ResultLabel.Length) : 63)
+                    .FontSize(CalculateFontSize(State.ResultLabel).fontSize)
                     .HorizontalTextAlignment(TextAlignment.End)
                     .LineBreakMode(LineBreakMode.NoWrap)
             )
@@ -42,6 +44,7 @@ internal class HomePage : Component<HomePageState>
             .GridRow(1)
             .HFill()
             .VEnd();
+    }
 
     private void OnKeyPressed(string key)
     {
@@ -50,7 +53,7 @@ internal class HomePage : Component<HomePageState>
         SetState(s =>
         {
             s.ExpressionLabel = _calculator.GetExpression();
-            s.ResultLabel = _calculator.CurrentInput;
+            s.ResultLabel = FormatNumber(_calculator.CurrentValue);
         });
     }
 }
