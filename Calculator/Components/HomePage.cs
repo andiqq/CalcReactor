@@ -25,10 +25,9 @@ internal class HomePage : Component<HomePageState>
                 )
             )
             .BackgroundColor(Background);
-    
+
     private VStack RenderDisplayPanel()
-    {
-        return VStack(
+        => VStack(
                 Label(State.ExpressionLabel)
                     .FontSize(40)
                     .TextColor(Text.WithAlpha(0.4f))
@@ -42,7 +41,6 @@ internal class HomePage : Component<HomePageState>
             .GridRow(1)
             .HFill()
             .VEnd();
-    }
 
     private void OnKeyPressed(string key)
     {
