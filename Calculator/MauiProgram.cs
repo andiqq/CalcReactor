@@ -39,12 +39,6 @@ namespace Calculator
 
                 window.WindowScene!.SizeRestrictions!.MinimumSize = windowSize;
                 window.WindowScene.SizeRestrictions!.MaximumSize = windowSize;
-
-                var screen = UIScreen.MainScreen.Bounds;
-                var x = (screen.Width - windowSize.Width) / 2;
-                var y = (screen.Height - windowSize.Height) / 2;
-                window.Frame = new CGRect(x, y, windowSize.Width, windowSize.Height);
-                Console.WriteLine("AppListening");
             });
 #endif
 #if WINDOWS
