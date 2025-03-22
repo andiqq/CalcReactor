@@ -2,13 +2,10 @@
 using Plugin.Maui.KeyListener;
 #if MACCATALYST
 using CoreGraphics;
-using UIKit;
 #endif
 #if WINDOWS
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Windows.Graphics;
-using WinRT.Interop;
 #endif
 using IWindow = Microsoft.Maui.IWindow;
 using AppTheme = Calculator.Resources.Styles.AppTheme;
@@ -23,7 +20,9 @@ namespace Calculator
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiReactorApp<HomePage>(app => { app.UseTheme<AppTheme>(); })
+
 #if MACCATALYST || WINDOWS
+                // Registering the KeyListener plugin for Mac Catalyst and WinUI for handling keyboard events
                 .UseKeyListener()
 #endif
                 .ConfigureFonts(fonts =>
@@ -32,6 +31,7 @@ namespace Calculator
                     fonts.AddFont("WorkSans-Light.ttf", "WorkSansLight");
                 });
 #if MACCATALYST
+            // Customizing the Window for Mac Catalyst
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, _) =>
             {
                 if (handler.PlatformView is not { } window) return;
@@ -42,50 +42,32 @@ namespace Calculator
             });
 #endif
 #if WINDOWS
-            Microsoft.Maui.Handlers.SwitchHandler.Mapper.AppendToMapping("CustomSwitch", (handler, view) =>
-            {
-                if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
-                {
-                    if (handler.PlatformView is Microsoft.UI.Xaml.Controls.ToggleSwitch toggleSwitch)
-                    {
-                        toggleSwitch.MinWidth = 0;
-                        toggleSwitch.Width = 40;
-                    }
-                }
-            });
-
+            // Customizing the Window for WinUI
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, _) =>
             {
-                var nativeWindow = handler.PlatformView as Microsoft.UI.Xaml.Window;
-                if (nativeWindow == null) return;
+                if (handler.PlatformView.AppWindow is not { } appWindow) return;
 
-                nativeWindow.Activate();
+                var windowSize = new SizeInt32(800, 1600);
 
-                var windowHandle = WindowNative.GetWindowHandle(nativeWindow);
-                var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
-                var appWindow = AppWindow.GetFromWindowId(windowId);
+                appWindow.Resize(windowSize);
 
-                // Set window size to 800x1600, scale factor 2
-                var size = new SizeInt32(800, 1600);
-                appWindow.Resize(size);
+                if (appWindow.Presenter is not OverlappedPresenter presenter) return;
 
-                // Center the window
-                var displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary);
-                if (displayArea is not null)
-                {
-                    var centerX = (displayArea.WorkArea.Width - size.Width) / 2;
-                    var centerY = (displayArea.WorkArea.Height - size.Height) / 2;
-                    appWindow.Move(new PointInt32(centerX, centerY));
-                }
+                presenter.IsResizable = false;
+                presenter.IsMaximizable = false;
 
-                // Prevent window resizing
-                var presenter = appWindow.Presenter as OverlappedPresenter;
-                if (presenter is not null)
-                {
-                    presenter.IsResizable = false;
-                    presenter.IsMaximizable = false;
-                }
             });
+
+            // Customizing the Switch control for WinUI
+            Microsoft.Maui.Handlers.SwitchHandler.Mapper.AppendToMapping("CustomSwitch", (handler, view) =>
+            {
+                if (DeviceInfo.Current.Platform != DevicePlatform.WinUI) return;
+
+                if (handler.PlatformView is not Microsoft.UI.Xaml.Controls.ToggleSwitch toggleSwitch) return;
+                    
+                toggleSwitch.MinWidth = 0;
+                toggleSwitch.Width = 40;
+             });
 #endif
             return builder.Build();
         }
