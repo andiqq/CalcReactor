@@ -1,4 +1,5 @@
-﻿namespace Calculator.Resources.Styles;
+﻿using Microsoft.Maui.Controls;
+namespace Calculator.Resources.Styles;
 
 internal class AppTheme : Theme
 {
