@@ -1,8 +1,8 @@
 ﻿using Calculator.Components;
+using Plugin.Maui.KeyListener;
 #if MACCATALYST
 using CoreGraphics;
 using UIKit;
-
 #endif
 #if WINDOWS
 using Microsoft.UI;
@@ -22,10 +22,10 @@ namespace Calculator
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiReactorApp<HomePage>(app =>
-                {
-                    app.UseTheme<AppTheme>();
-                })
+                .UseMauiReactorApp<HomePage>(app => { app.UseTheme<AppTheme>(); })
+#if MACCATALYST || WINDOWS
+                .UseKeyListener()
+#endif
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("WorkSans-Regular", "WorkSansRegular");
@@ -44,6 +44,7 @@ namespace Calculator
                 var x = (screen.Width - windowSize.Width) / 2;
                 var y = (screen.Height - windowSize.Height) / 2;
                 window.Frame = new CGRect(x, y, windowSize.Width, windowSize.Height);
+                Console.WriteLine("AppListening");
             });
 #endif
 #if WINDOWS

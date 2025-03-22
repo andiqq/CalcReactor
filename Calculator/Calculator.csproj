@@ -67,6 +67,8 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.50"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.3"/>
+        <PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.50" />
+        <PackageReference Include="Plugin.Maui.KeyListener" Version="1.0.0-preview1" />
         <PackageReference Include="Reactor.Maui" Version="3.0.25"/>
         <PackageReference Include="Reactor.Maui.Canvas" Version="3.0.25" />
     </ItemGroup>
