@@ -6,8 +6,7 @@ internal class ThemeToggle : Component
         => HStack(
             Image("sun.png")
                 .HeightRequest(20)
-                .WidthRequest(20)
-                .GridColumn(0),
+                .WidthRequest(20),
             Switch()
                 .OnColor(Colors.Gray)
                 .IsToggled(IsDarkTheme)
@@ -17,7 +16,6 @@ internal class ThemeToggle : Component
             Image("moon.png")
                 .HeightRequest(20)
                 .WidthRequest(20)
-                .GridColumn(2)
         )
             .HCenter()
             .HCenter();

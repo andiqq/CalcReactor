@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using Calculator.Services;
 
 namespace Calculator.Components;
@@ -13,10 +14,11 @@ internal class HomePageState
 internal class HomePage : Component<HomePageState>
 {
     private readonly CalculatorEngine _calculator = new();
+    
 
     public override VisualNode Render()
         => ContentPage(
-                Grid("48 * 420", "*",
+                Grid("56 * 420", "*",
                     new ThemeToggle(),
                     RenderDisplayPanel(),
                     new KeyPad()

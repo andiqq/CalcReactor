@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui;
+﻿using Calculator;
+using Microsoft.Maui;
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,

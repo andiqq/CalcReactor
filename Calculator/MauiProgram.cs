@@ -2,9 +2,17 @@
 #if MACCATALYST
 using CoreGraphics;
 using UIKit;
+
 #endif
-using AppTheme = Calculator.Resources.Styles.AppTheme;
+#if WINDOWS
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Windows.Graphics;
+using WinRT.Interop;
+#endif
 using IWindow = Microsoft.Maui.IWindow;
+using AppTheme = Calculator.Resources.Styles.AppTheme;
+
 
 namespace Calculator
 {
@@ -39,22 +47,48 @@ namespace Calculator
             });
 #endif
 #if WINDOWS
+            Microsoft.Maui.Handlers.SwitchHandler.Mapper.AppendToMapping("CustomSwitch", (handler, view) =>
+            {
+                if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
+                {
+                    if (handler.PlatformView is Microsoft.UI.Xaml.Controls.ToggleSwitch toggleSwitch)
+                    {
+                        toggleSwitch.MinWidth = 0;
+                        toggleSwitch.Width = 40;
+                    }
+                }
+            });
+
             Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, _) =>
             {
-                var nativeWindow = handler.PlatformView;
-                var windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
+                var nativeWindow = handler.PlatformView as Microsoft.UI.Xaml.Window;
+                if (nativeWindow == null) return;
+
+                nativeWindow.Activate();
+
+                var windowHandle = WindowNative.GetWindowHandle(nativeWindow);
                 var windowId = Win32Interop.GetWindowIdFromWindow(windowHandle);
                 var appWindow = AppWindow.GetFromWindowId(windowId);
 
-                var size = new SizeInt32(400, 800);
+                // Set window size to 800x1600, scale factor 2
+                var size = new SizeInt32(800, 1600);
                 appWindow.Resize(size);
 
+                // Center the window
+                var displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary);
+                if (displayArea is not null)
+                {
+                    var centerX = (displayArea.WorkArea.Width - size.Width) / 2;
+                    var centerY = (displayArea.WorkArea.Height - size.Height) / 2;
+                    appWindow.Move(new PointInt32(centerX, centerY));
+                }
+
+                // Prevent window resizing
                 var presenter = appWindow.Presenter as OverlappedPresenter;
-                if (presenter != null)
+                if (presenter is not null)
                 {
                     presenter.IsResizable = false;
-                    presenter.SetMinSize(size);
-                    presenter.SetMaxSize(size);
+                    presenter.IsMaximizable = false;
                 }
             });
 #endif

@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\components\\themetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\themetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\platforms\\windows\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\platforms\\windows\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ThemeToggle.cs",
+              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\ThemeToggle.cs",
+              "RelativeDocumentMoniker": "Calculator\\Components\\ThemeToggle.cs",
+              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\ThemeToggle.cs*",
+              "RelativeToolTip": "Calculator\\Components\\ThemeToggle.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T10:44:14.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomePage.cs",
+              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\HomePage.cs",
+              "RelativeDocumentMoniker": "Calculator\\Components\\HomePage.cs",
+              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\HomePage.cs",
+              "RelativeToolTip": "Calculator\\Components\\HomePage.cs",
+              "ViewState": "AgIAAAoAAABA0szMzMwewBYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T10:43:32.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "RelativeDocumentMoniker": "Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "RelativeToolTip": "Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T10:39:12.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "Calculator\\MauiProgram.cs",
+              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\MauiProgram.cs*",
+              "RelativeToolTip": "Calculator\\MauiProgram.cs*",
+              "ViewState": "AgIAACIAAACAAgAAAEAtwDsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T10:31:41.364Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
