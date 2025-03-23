@@ -9,6 +9,7 @@ using Windows.Graphics;
 #endif
 using IWindow = Microsoft.Maui.IWindow;
 using AppTheme = Calculator.Resources.Styles.AppTheme;
+using System.Globalization;
 
 
 namespace Calculator
@@ -17,6 +18,12 @@ namespace Calculator
     {
         public static MauiApp CreateMauiApp()
         {
+            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+
+            
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiReactorApp<HomePage>(app => { app.UseTheme<AppTheme>(); })

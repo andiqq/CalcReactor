@@ -1,8 +1,11 @@
 // ReSharper disable SpecifyACultureInStringConversionExplicitly
 namespace Calculator.Services;
+using System.Globalization;
 
 internal class CalculatorEngine
 {
+    private readonly CultureInfo _culture = CultureInfo.InvariantCulture;
+    
     private decimal? _number1;
     private decimal? _number2;
     private string _currentOperation = string.Empty;
@@ -12,13 +15,13 @@ internal class CalculatorEngine
     
     public string CurrentInput { get; private set; } = "0";
 
-    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(CurrentInput);
+    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(CurrentInput, _culture);
 
     public string GetExpression()
     {
         if (_number1 == null) return string.Empty;
 
-        var expression = _number1.Value.ToString();
+        var expression = _number1.Value.ToString(_culture);
 
         if (string.IsNullOrEmpty(_currentOperation)) return string.Empty;
 
@@ -68,7 +71,7 @@ internal class CalculatorEngine
                 }
                 else
                 {
-                    _number1 = decimal.Parse(CurrentInput);  // Parse only for user input
+                    _number1 = decimal.Parse(CurrentInput, _culture);  // Parse only for user input
                 }
                 _currentOperation = key;
                 CurrentInput = "0";
@@ -101,7 +104,7 @@ internal class CalculatorEngine
     {
         if (_number1 == null || string.IsNullOrEmpty(_currentOperation)) return;
 
-        _number2 = decimal.Parse(CurrentInput);
+        _number2 = decimal.Parse(CurrentInput, _culture);
         _isPercentage = key == "%";
         var n2 = _isPercentage ? (_number2.Value / 100.0m) * _number1.Value : _number2.Value;
 
@@ -114,7 +117,7 @@ internal class CalculatorEngine
             _ => _number2.Value
         };
 
-        CurrentInput = _currentValue.ToString();
+        CurrentInput = _currentValue.ToString(_culture);
         _number1 = _currentValue;
         _number2 = null;
         _currentOperation = string.Empty;

@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Calculator.Services;
 using Plugin.Maui.KeyListener;
+using System.Globalization;
 
 namespace Calculator.Components;
+
 
 internal class HomePageState
 {
@@ -20,6 +22,8 @@ partial class KeyboardBehavior
 [SuppressMessage("ReSharper", "SpecifyACultureInStringConversionExplicitly")]
 internal class HomePage : Component<HomePageState>
 {
+    private readonly CultureInfo _culture = CultureInfo.GetCultureInfo("en-US");
+    
     private readonly CalculatorEngine _calculator = new();
 
     public override VisualNode Render()
