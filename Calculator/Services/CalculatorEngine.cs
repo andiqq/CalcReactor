@@ -6,6 +6,8 @@ internal class CalculatorEngine
 {
     private readonly CultureInfo _culture = CultureInfo.InvariantCulture;
     
+    public bool IsOverflow { get; set; }
+    
     private decimal? _number1;
     private decimal? _number2;
     private string _currentOperation = string.Empty;
@@ -103,19 +105,32 @@ internal class CalculatorEngine
     private void Calculate(string key)
     {
         if (_number1 == null || string.IsNullOrEmpty(_currentOperation)) return;
-
+        
         _number2 = decimal.Parse(CurrentInput, _culture);
         _isPercentage = key == "%";
         var n2 = _isPercentage ? (_number2.Value / 100.0m) * _number1.Value : _number2.Value;
+        
+        // Ignore division by zero
+        if (_currentOperation == "÷" && n2 == 0) return;
 
-        _currentValue = _currentOperation switch
+        try
         {
-            "÷" => _number1.Value / n2,
-            "×" => _number1.Value * n2,
-            "+" => _number1.Value + n2,
-            "-" => _number1.Value - n2,
-            _ => _number2.Value
-        };
+            IsOverflow = false;
+
+            _currentValue = _currentOperation switch
+            {
+                "÷" => _number1.Value / n2,
+                "×" => _number1.Value * n2,
+                "+" => _number1.Value + n2,
+                "-" => _number1.Value - n2,
+                _ => _number2.Value
+            };
+        }
+        catch (OverflowException)
+        {
+            IsOverflow = true;
+            _calculationJustFinished = true;
+        }
 
         CurrentInput = _currentValue.ToString(_culture);
         _number1 = _currentValue;

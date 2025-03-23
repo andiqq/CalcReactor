@@ -29,6 +29,7 @@ internal class HomePage : Component<HomePageState>
     public override VisualNode Render()
         => ContentPage(
                 Grid("56 * 420", "*",
+                    
 #if MACCATALYST || WINDOWS
                     new KeyboardBehavior()
                         .OnKeyDown(KeyDown),
@@ -50,7 +51,7 @@ internal class HomePage : Component<HomePageState>
                     .TextColor(Text.WithAlpha(0.4f))
                     .HorizontalTextAlignment(TextAlignment.End),
                 Label(State.ResultLabel)
-                    .FontSize(CalculateFontSize(State.ResultLabel).fontSize)
+                    .FontSize(62)
                     .HorizontalTextAlignment(TextAlignment.End)
                     .LineBreakMode(LineBreakMode.NoWrap)
             )
@@ -61,12 +62,33 @@ internal class HomePage : Component<HomePageState>
     
     private void OnKeyPressed(string key)
     {
-        _calculator.HandleInput(key);
+        // Skip validation for non-numeric keys
+        if (!char.IsDigit(key[0]))
+        {
+            _calculator.HandleInput(key);
+        }
+        // Validate numeric input
+        else
+        {
+            var currentValue = _calculator.CurrentValue;
+            if (currentValue < decimal.MaxValue / 10)
+            {
+                _calculator.HandleInput(key);
+            }
+            // Else silently ignore the input
+        }
 
         SetState(s =>
         {
             s.ExpressionLabel = _calculator.GetExpression();
+            if (_calculator.IsOverflow)
+            {
+                s.ResultLabel = "Overflow";
+                _calculator.IsOverflow = false;
+                return;
+            }
             s.ResultLabel = key == "." ? _calculator.CurrentInput : FormatNumber(_calculator.CurrentValue);
+        
         });
     }
 
