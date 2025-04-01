@@ -4,30 +4,30 @@ using System.Globalization;
 
 internal class CalculatorEngine
 {
-    private readonly CultureInfo _culture = CultureInfo.InvariantCulture;
+    private readonly CultureInfo culture = CultureInfo.InvariantCulture;
     
     public bool IsOverflow { get; set; }
     
-    private decimal? _number1;
-    private decimal? _number2;
-    private string _currentOperation = string.Empty;
-    private decimal _currentValue;
-    private bool _isPercentage;
-    private bool _calculationJustFinished;
+    private decimal? number1;
+    private decimal? number2;
+    private string currentOperation = string.Empty;
+    private decimal currentValue;
+    private bool isPercentage;
+    private bool calculationJustFinished;
     
     public string CurrentInput { get; private set; } = "0";
 
-    public decimal CurrentValue => _calculationJustFinished ? _currentValue : decimal.Parse(CurrentInput, _culture);
+    public decimal CurrentValue => calculationJustFinished ? currentValue : decimal.Parse(CurrentInput, culture);
 
     public string GetExpression()
     {
-        if (_number1 == null) return string.Empty;
+        if (number1 == null) return string.Empty;
 
-        var expression = _number1.Value.ToString(_culture);
+        var expression = number1.Value.ToString(culture);
 
-        if (string.IsNullOrEmpty(_currentOperation)) return string.Empty;
+        if (string.IsNullOrEmpty(currentOperation)) return string.Empty;
 
-        expression += $" {_currentOperation}";
+        expression += $" {currentOperation}";
 
         if (CurrentInput != "0")
         {
@@ -54,44 +54,44 @@ internal class CalculatorEngine
                 if (CurrentInput == "0") break;
 
                 CurrentInput = CurrentInput.StartsWith('-') ? CurrentInput[1..] : "-" + CurrentInput;
-                _calculationJustFinished = false;
+                calculationJustFinished = false;
                 break;
 
-            case "." when _calculationJustFinished || !CurrentInput.Contains('.'):
-                CurrentInput = _calculationJustFinished ? "0." : $"{CurrentInput}.";
-                _calculationJustFinished = false;
+            case "." when calculationJustFinished || !CurrentInput.Contains('.'):
+                CurrentInput = calculationJustFinished ? "0." : $"{CurrentInput}.";
+                calculationJustFinished = false;
                 break;
 
             case "÷" or "×" or "+" or "-":
-                if (_number1 != null && !string.IsNullOrEmpty(_currentOperation))
+                if (number1 != null && !string.IsNullOrEmpty(currentOperation))
                 {
                     Calculate("=");
                 }
-                else if (_calculationJustFinished)
+                else if (calculationJustFinished)
                 {
-                    _number1 = _currentValue;  // Use stored decimal for calculation results
+                    number1 = currentValue;  // Use stored decimal for calculation results
                 }
                 else
                 {
-                    _number1 = decimal.Parse(CurrentInput, _culture);  // Parse only for user input
+                    number1 = decimal.Parse(CurrentInput, culture);  // Parse only for user input
                 }
-                _currentOperation = key;
+                currentOperation = key;
                 CurrentInput = "0";
-                _calculationJustFinished = false;
+                calculationJustFinished = false;
                 break;
 
             case "=" or "%":
                 Calculate(key);
-                _calculationJustFinished = true;
+                calculationJustFinished = true;
                 break;
 
             default:
                 if (char.IsDigit(key[0]))
                 {
-                    if (_calculationJustFinished)
+                    if (calculationJustFinished)
                     {
                         CurrentInput = key;
-                        _calculationJustFinished = false;
+                        calculationJustFinished = false;
                     }
                     else
                     {
@@ -104,49 +104,49 @@ internal class CalculatorEngine
 
     private void Calculate(string key)
     {
-        if (_number1 == null || string.IsNullOrEmpty(_currentOperation)) return;
+        if (number1 == null || string.IsNullOrEmpty(currentOperation)) return;
         
-        _number2 = decimal.Parse(CurrentInput, _culture);
-        _isPercentage = key == "%";
-        var n2 = _isPercentage ? (_number2.Value / 100.0m) * _number1.Value : _number2.Value;
+        number2 = decimal.Parse(CurrentInput, culture);
+        isPercentage = key == "%";
+        var n2 = isPercentage ? (number2.Value / 100.0m) * number1.Value : number2.Value;
         
         // Ignore division by zero
-        if (_currentOperation == "÷" && n2 == 0) return;
+        if (currentOperation == "÷" && n2 == 0) return;
 
         try
         {
             IsOverflow = false;
 
-            _currentValue = _currentOperation switch
+            currentValue = currentOperation switch
             {
-                "÷" => _number1.Value / n2,
-                "×" => _number1.Value * n2,
-                "+" => _number1.Value + n2,
-                "-" => _number1.Value - n2,
-                _ => _number2.Value
+                "÷" => number1.Value / n2,
+                "×" => number1.Value * n2,
+                "+" => number1.Value + n2,
+                "-" => number1.Value - n2,
+                _ => number2.Value
             };
         }
         catch (OverflowException)
         {
             IsOverflow = true;
-            _calculationJustFinished = true;
+            calculationJustFinished = true;
         }
 
-        CurrentInput = _currentValue.ToString(_culture);
-        _number1 = _currentValue;
-        _number2 = null;
-        _currentOperation = string.Empty;
-        _isPercentage = false;
+        CurrentInput = currentValue.ToString(culture);
+        number1 = currentValue;
+        number2 = null;
+        currentOperation = string.Empty;
+        isPercentage = false;
     }
 
     private void Clear()
     {
-        _number1 = null;
-        _number2 = null;
-        _currentOperation = string.Empty;
+        number1 = null;
+        number2 = null;
+        currentOperation = string.Empty;
         CurrentInput = "0";
-        _currentValue = 0m;
-        _isPercentage = false;
-        _calculationJustFinished = false;
+        currentValue = 0m;
+        isPercentage = false;
+        calculationJustFinished = false;
     }
 }

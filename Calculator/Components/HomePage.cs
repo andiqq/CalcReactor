@@ -22,9 +22,7 @@ partial class KeyboardBehavior
 [SuppressMessage("ReSharper", "SpecifyACultureInStringConversionExplicitly")]
 internal class HomePage : Component<HomePageState>
 {
-    private readonly CultureInfo _culture = CultureInfo.GetCultureInfo("en-US");
-    
-    private readonly CalculatorEngine _calculator = new();
+    private readonly CalculatorEngine calculator = new();
 
     public override VisualNode Render()
         => ContentPage(
@@ -65,29 +63,29 @@ internal class HomePage : Component<HomePageState>
         // Skip validation for non-numeric keys
         if (!char.IsDigit(key[0]))
         {
-            _calculator.HandleInput(key);
+            calculator.HandleInput(key);
         }
         // Validate numeric input
         else
         {
-            var currentValue = _calculator.CurrentValue;
+            var currentValue = calculator.CurrentValue;
             if (currentValue < decimal.MaxValue / 10)
             {
-                _calculator.HandleInput(key);
+                calculator.HandleInput(key);
             }
             // Else silently ignore the input
         }
 
         SetState(s =>
         {
-            s.ExpressionLabel = _calculator.GetExpression();
-            if (_calculator.IsOverflow)
+            s.ExpressionLabel = calculator.GetExpression();
+            if (calculator.IsOverflow)
             {
                 s.ResultLabel = "Overflow";
-                _calculator.IsOverflow = false;
+                calculator.IsOverflow = false;
                 return;
             }
-            s.ResultLabel = key == "." ? _calculator.CurrentInput : FormatNumber(_calculator.CurrentValue);
+            s.ResultLabel = key == "." ? calculator.CurrentInput : FormatNumber(calculator.CurrentValue);
         
         });
     }

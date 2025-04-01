@@ -1,5 +1,8 @@
 ﻿using Calculator.Components;
+#if MACCATALYST || WINDOWS
 using Plugin.Maui.KeyListener;
+using IWindow = Microsoft.Maui.IWindow;
+#endif
 #if MACCATALYST
 using CoreGraphics;
 #endif
@@ -7,10 +10,8 @@ using CoreGraphics;
 using Microsoft.UI.Windowing;
 using Windows.Graphics;
 #endif
-using IWindow = Microsoft.Maui.IWindow;
 using AppTheme = Calculator.Resources.Styles.AppTheme;
 using System.Globalization;
-
 
 namespace Calculator
 {
@@ -20,9 +21,6 @@ namespace Calculator
         {
             CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
-
             
             var builder = MauiApp.CreateBuilder();
             builder

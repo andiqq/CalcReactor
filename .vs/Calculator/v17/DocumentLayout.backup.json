@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\",
+  "WorkspaceRootPath": "Z:\\RiderProjects\\CalcReactor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\services\\calculatorengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\services\\calculatorengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\components\\keypad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\keypad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\components\\themetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\components\\themetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\themetoggle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|c:\\users\\andreas\\source\\repos\\calcreactor2\\calculator\\platforms\\windows\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\homepage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\services\\calculatorengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\services\\calculatorengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\components\\keypad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\components\\keypad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|z:\\riderprojects\\calcreactor\\calculator\\platforms\\windows\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3EC4696-2ADE-4785-B206-48FD0B7EC40A}|Calculator\\Calculator.csproj|solutionrelative:calculator\\platforms\\windows\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,15 +34,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "KeyPad.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\KeyPad.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\KeyPad.cs",
               "RelativeDocumentMoniker": "Calculator\\Components\\KeyPad.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\KeyPad.cs",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\KeyPad.cs",
               "RelativeToolTip": "Calculator\\Components\\KeyPad.cs",
               "ViewState": "AgIAAAUAAACAm5mZmZkuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -50,11 +54,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CalculatorEngine.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Services\\CalculatorEngine.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Services\\CalculatorEngine.cs",
               "RelativeDocumentMoniker": "Calculator\\Services\\CalculatorEngine.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Services\\CalculatorEngine.cs",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Services\\CalculatorEngine.cs",
               "RelativeToolTip": "Calculator\\Services\\CalculatorEngine.cs",
               "ViewState": "AgIAAAIAAAAAojMzMzPbvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -62,11 +66,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "ThemeToggle.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\ThemeToggle.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\ThemeToggle.cs",
               "RelativeDocumentMoniker": "Calculator\\Components\\ThemeToggle.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\ThemeToggle.cs",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\ThemeToggle.cs",
               "RelativeToolTip": "Calculator\\Components\\ThemeToggle.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,24 +78,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "HomePage.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\HomePage.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\HomePage.cs",
               "RelativeDocumentMoniker": "Calculator\\Components\\HomePage.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Components\\HomePage.cs",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Components\\HomePage.cs",
               "RelativeToolTip": "Calculator\\Components\\HomePage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T10:43:32.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T10:43:32.092Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Platforms\\Windows\\App.xaml.cs",
               "RelativeDocumentMoniker": "Calculator\\Platforms\\Windows\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\Platforms\\Windows\\App.xaml.cs",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\Platforms\\Windows\\App.xaml.cs",
               "RelativeToolTip": "Calculator\\Platforms\\Windows\\App.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -101,11 +104,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\MauiProgram.cs",
+              "DocumentMoniker": "Z:\\RiderProjects\\CalcReactor\\Calculator\\MauiProgram.cs",
               "RelativeDocumentMoniker": "Calculator\\MauiProgram.cs",
-              "ToolTip": "C:\\Users\\andreas\\source\\repos\\CalcReactor2\\Calculator\\MauiProgram.cs*",
-              "RelativeToolTip": "Calculator\\MauiProgram.cs*",
-              "ViewState": "AgIAAAMAAAAACDMzMzP7vzsAAAAVAAAAAAAAAA==",
+              "ToolTip": "Z:\\RiderProjects\\CalcReactor\\Calculator\\MauiProgram.cs",
+              "RelativeToolTip": "Calculator\\MauiProgram.cs",
+              "ViewState": "AgIAAAYAAAAAMzMzM7MSwDUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T10:31:41.364Z",
               "EditorCaption": ""

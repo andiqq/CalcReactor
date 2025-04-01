@@ -5,7 +5,7 @@ namespace Calculator.Components;
 
 internal partial class KeyPad : Component
 {
-    [Prop] private Action<string>? _onKeyPressed;
+    [Prop] private Action<string>? onKeyPressed;
 
     public override VisualNode Render()
         => Grid("* * * * *", " * * * *",
@@ -41,7 +41,7 @@ internal partial class KeyPad : Component
             .ThemeKey(theme)
             .GridRow(row)
             .GridColumn(column)
-            .OnClicked(() => _onKeyPressed?.Invoke(text));
+            .OnClicked(() => onKeyPressed?.Invoke(text));
 
     private ImageButton RenderImageButton(string imageSource, string text, int row, int column)
         => ImageButton()
@@ -51,5 +51,5 @@ internal partial class KeyPad : Component
             .CornerRadius(24)
             .GridRow(row)
             .GridColumn(column)
-            .OnClicked(() => _onKeyPressed?.Invoke(text));
+            .OnClicked(() => onKeyPressed?.Invoke(text));
 }

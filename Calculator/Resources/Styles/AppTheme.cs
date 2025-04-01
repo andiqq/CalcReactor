@@ -49,14 +49,14 @@ internal class AppTheme : Theme
             .CornerRadius(24)
             .FontSize(32);
 
-        ButtonStyles.Themes[Selector.High] = _ => _
+        ButtonStyles.Themes[High] = _ => _
             .TextColor(GeneralWhite)
             .BackgroundColor(ButtonHighBackground);
 
-        ButtonStyles.Themes[Selector.Medium] = _ => _
+        ButtonStyles.Themes[Medium] = _ => _
             .BackgroundColor(ButtonMediumBackground);
 
-        ButtonStyles.Themes[Selector.Low] = _ => _
+        ButtonStyles.Themes[Low] = _ => _
             .BackgroundColor(ButtonLowBackground);
     }
 }
