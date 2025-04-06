@@ -1,4 +1,7 @@
 // ReSharper disable SpecifyACultureInStringConversionExplicitly
+
+using System;
+
 namespace Calculator.Services;
 using System.Globalization;
 

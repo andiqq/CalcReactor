@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Calculator.Services;
 using Plugin.Maui.KeyListener;
 using System.Globalization;
@@ -116,7 +117,6 @@ internal class HomePage : Component<HomePageState>
             KeyboardKeys.Escape or KeyboardKeys.C => "C",
             _ => null
         };
-        Console.WriteLine(key);
 
         if (key != null)
         {
